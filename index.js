@@ -1,3 +1,4 @@
+const dbConfig=require('./config/dbConfig')
 const express=require('express');
 const app=express();
 const http=require('http')
@@ -21,6 +22,8 @@ io.on('connection',(socket)=>{
     })
 })
 
-server.listen(3000,()=>{
-    console.log('listening on post: 3000');
+server.listen(3000,async()=>{
+    console.log('listening on post: 3000')
+    await dbConfig();
+    console.log('connected to mongo db');
 })
